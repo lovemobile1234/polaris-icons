@@ -27,7 +27,7 @@ const theme = {
     width: 104,
     topBarSource: require('../../../static/images/shopify-logo.svg'),
     url: '/',
-    accessibilityLabel: 'Polaris icons',
+    accessibilityLabel: 'Polaris icon explorer',
   },
 };
 

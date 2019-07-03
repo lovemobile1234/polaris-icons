@@ -1,5 +1,5 @@
 ---
-name: Feedback for Polaris icons UI
+name: Feedback for Polaris icon explorer
 about: For suggestions or issues related to https://polaris-icons.shopify.com
 title: '[Feedback]'
 labels: ''
@@ -14,9 +14,9 @@ Write a short description of the issue here ↓
 
 ## Steps to reproduce
 
-1.
-1.
-1.
+1. One
+1. Two
+1. Three
 
 ## Expected behavior
 
