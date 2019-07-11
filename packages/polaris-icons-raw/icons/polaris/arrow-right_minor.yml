@@ -6,6 +6,7 @@ description: Used to indicate that merchants will be directed to the next page.
 keywords:
   - arrow
   - right
+  - next
 public: true
 version: 1
 date_added: 2018-11-14
