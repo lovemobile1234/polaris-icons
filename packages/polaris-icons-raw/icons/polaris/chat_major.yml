@@ -5,8 +5,11 @@ description:
 keywords:
   - chat
   - speech bubble
+  - message
+  - talk
 authors:
   - Adam Whitcroft
+  - Yang Chen
 public: true
 version: 1
 date_added: 2019-03-15
