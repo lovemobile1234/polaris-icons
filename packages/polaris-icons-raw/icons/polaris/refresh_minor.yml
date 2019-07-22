@@ -4,6 +4,7 @@ description: Used to denote the action of resetting a customer’s account passw
 keywords:
   - refresh
   - reload
+  - sync
 authors:
   - Adam Whitcroft
 public: true
