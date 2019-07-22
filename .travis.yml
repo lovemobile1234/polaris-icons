@@ -1,0 +1,19 @@
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - '10'
+      cache: yarn
+      script:
+        - yarn run build
+        - yarn run type-check
+        - yarn run test
+        - yarn run lint
+    - language: ruby
+      rvm:
+        - '2.6.2'
+      before_install:
+        - sudo apt-get install -y librsvg2-bin
+      install: cd packages-ruby/polaris_icons && bundle install && bundle check
+      script:
+        - ./scripts/build-gem.sh

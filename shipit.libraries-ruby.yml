@@ -1,6 +1,6 @@
 ci:
   require:
-    - buildkite/polaris-icons
+    - Travis CI - Branch
   hide:
     - buildkite/polaris-icons-production-builder
     - buildkite/shopify-polaris-icons-binary-authorization-validator

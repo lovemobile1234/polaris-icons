@@ -3,7 +3,7 @@ kubernetes:
   context: tier3
 ci:
   require:
-    - buildkite/polaris-icons
+    - Travis CI - Branch
     - buildkite/polaris-icons-production-builder
     - buildkite/shopify-polaris-icons-k8s-template-validator
 dependencies:

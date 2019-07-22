@@ -8,3 +8,4 @@ env:
 
 steps:
   - build: production
+    branches: master
