@@ -22,10 +22,18 @@ gem_root=$(recursive_find_file "$script_dir" "polaris_icons.gemspec")
 proj_root=$(recursive_find_file "$script_dir" "dev.yml")
 
 mkdir -p "$gem_root/images/pdf/"
+mkdir -p "$gem_root/images/svg/"
+
+yarn workspace @shopify/polaris-icons --cwd "$proj_root" run build
 
 for file in "$proj_root"/packages/polaris-icons-raw/icons/polaris/*.svg; do
   rsvg-convert -f pdf -o $(echo "$file" | sed -e 's/.svg$/.pdf/' -e "s#$proj_root/packages/polaris-icons-raw/icons/polaris\/#$gem_root/images/pdf/#") "$file"
   echo "Converted $file"
+done
+
+for file in "$proj_root"/packages/polaris-icons/images/*.svg; do
+  cp "$file" "$gem_root/images/svg/"
+  echo "copied $file"
 done
 
 cd $gem_root && bundle exec rake build
