@@ -1,4 +1,4 @@
-version = "0.1.3"
+version = "0.1.4"
 
 Gem::Specification.new do |spec|
   spec.name          = "polaris_icons"
