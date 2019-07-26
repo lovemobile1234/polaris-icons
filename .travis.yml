@@ -14,6 +14,6 @@ matrix:
         - '2.6.2'
       before_install:
         - sudo apt-get install -y librsvg2-bin
-      install: cd packages-ruby/polaris_icons && bundle install && bundle check
+      install: yarn install && cd packages-ruby/polaris_icons && bundle install && bundle check
       script:
         - ./scripts/build-gem.sh
