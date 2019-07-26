@@ -12,7 +12,7 @@ shared:
     run:
       - sudo apt-get update
       - sudo apt-get install librsvg2-bin
-      - [ -d "node_modules" ] && sudo chown -R circleci:circleci node_modules packages/*/bin
+      - '[ -d "node_modules" ] && sudo chown -R circleci:circleci node_modules packages/*/bin'
       - yarn install
       - cd packages-ruby/polaris_icons/
       - bundle install
