@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, DisplayText, TextStyle} from '@shopify/polaris';
+import {Button, ButtonGroup, DisplayText, TextStyle} from '@shopify/polaris';
 import styles from './EmptyState.module.scss';
 
 export default function EmptyState() {
@@ -12,13 +12,19 @@ export default function EmptyState() {
         <DisplayText size="small">No icons found</DisplayText>
         <p>
           <TextStyle variation="subdued">
-            Open a GitHub issue to suggest a new icon or send us feedback.
+            Open a GitHub issue to send us feedback. Shopify employees can also
+            submit a request for a new icon.
           </TextStyle>
         </p>
-        <div>
-          <Button url="https://github.com/Shopify/polaris-icons/issues/new/choose">
-            Open an issue
-          </Button>
+        <div className={styles.buttonGroup}>
+          <ButtonGroup>
+            <Button url="https://github.com/Shopify/polaris-icons/issues/new/choose">
+              Send feedback
+            </Button>
+            <Button url="https://forms.gle/nY446pDJQJB7pHxP6">
+              Request icon
+            </Button>
+          </ButtonGroup>
         </div>
       </div>
     </div>
