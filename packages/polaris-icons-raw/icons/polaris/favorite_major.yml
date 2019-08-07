@@ -1,9 +1,9 @@
-name: favourite
+name: favorite
 set: major
 description:
   Used to represent an action to favourite or save an item or resource.
 keywords:
-  - favourite
+  - favorite
   - save
   - star
 authors:
