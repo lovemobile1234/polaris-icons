@@ -1,4 +1,4 @@
-name: favorite
+name: favourite
 set: major
 description:
   Used to represent an action to favourite or save an item or resource.
