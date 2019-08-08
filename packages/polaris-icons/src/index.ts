@@ -2204,6 +2204,30 @@ export {
 } from '@shopify/polaris-icons-raw/icons/polaris/team_major_twotone.svg';
 
 export {
+  default as TextAlignmentCenterMajorMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/text-alignment-center_major_monotone.svg';
+
+export {
+  default as TextAlignmentCenterMajorTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/text-alignment-center_major_twotone.svg';
+
+export {
+  default as TextAlignmentLeftMajorMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/text-alignment-left_major_monotone.svg';
+
+export {
+  default as TextAlignmentLeftMajorTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/text-alignment-left_major_twotone.svg';
+
+export {
+  default as TextAlignmentRightMajorMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/text-alignment-right_major_monotone.svg';
+
+export {
+  default as TextAlignmentRightMajorTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/text-alignment-right_major_twotone.svg';
+
+export {
   default as TextMajorMonotone,
 } from '@shopify/polaris-icons-raw/icons/polaris/text_major_monotone.svg';
 

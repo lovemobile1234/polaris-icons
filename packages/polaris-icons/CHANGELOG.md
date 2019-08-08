@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### New icons
+
+- `TextAlignmentCenterMajorMonotone`
+- `TextAlignmentCenterMajorTwotone`
+- `TextAlignmentLeftMajorMonotone`
+- `TextAlignmentLeftMajorTwotone`
+- `TextAlignmentRightMajorMonotone`
+- `TextAlignmentRightMajorTwotone`
+
 ## 3.4.0 - 2019-05-20
 
 ### Enhancements
