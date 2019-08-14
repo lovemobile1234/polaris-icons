@@ -15,6 +15,8 @@ All notable changes to this project will be documented in this file.
 - `TextAlignmentRightMajorMonotone`
 - `TextAlignmentRightMajorTwotone`
 
+- Added a test to restrict attributes on `<svg>` to `xmlns` and `viewBox` ([#649](https://github.com/Shopify/polaris-icons/pull/649))
+
 ## 3.4.0 - 2019-05-20
 
 ### Enhancements

@@ -43,6 +43,13 @@ const allIconFiles = glob
 allIconFiles.forEach(
   ({iconPath, iconSource, iconAst, expectedViewbox, expectedFillColors}) => {
     describe(`SVG Contents: packages/${iconPath}`, () => {
+      it(`only has the expected root attributes`, () => {
+        const properties = Object.keys(
+          select(':root', iconAst).properties,
+        ).sort();
+        expect(properties).toStrictEqual(['viewBox', 'xmlns'].sort());
+      });
+
       it(`has an xml namespace`, () => {
         const xmlns = select(':root', iconAst).properties.xmlns;
         expect(xmlns).toStrictEqual('http://www.w3.org/2000/svg');
