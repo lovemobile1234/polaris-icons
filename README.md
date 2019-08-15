@@ -9,7 +9,7 @@ Browse and search Polaris icons: <https://polaris-icons.shopify.com>.
 - [Packages](#packages)
 - [Implementing icons](#implementing-icons)
 - [Designing icons](#designing-icons)
-- [Contributing](#contributing)
+- [Contributing](#contributing-)
 - [Licenses](#licenses)
 
 ## Packages
