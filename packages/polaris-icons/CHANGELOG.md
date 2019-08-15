@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-<!-- ## Unreleased -->
+## Unreleased
+
+### Fixed
+
+- `StarFilledMinor` and `StarOutlineMinor` - Centred the icons in their viewboxes
 
 ## 3.5.0 - 2019-08-08
 
