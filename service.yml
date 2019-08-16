@@ -11,7 +11,7 @@
 # https://services.shopify.io/services/polaris-icons/libraries_ruby
 # is the environment for the gems deployed to packagecloud.
 
-org_line: Shopify Core
+org_line: Store Management
 owners:
   - Shopify/polaris
 classification: tier3
