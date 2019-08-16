@@ -85,9 +85,8 @@ The release process currently involves some manual steps to complete. Please pin
 
 #### Publish the Ruby gem
 
-1. Log in to [Shipit](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby)
-1. When CI is 🍏 on the `Publish` commit, press `Deploy` to publish the gem to package cloud
+The Ruby gem is automatically published via the [`polaris-icons/libraries-ruby` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby).
 
-## Releasing the icon explorer website
+## Releasing the [Polaris icon explorer website](https://polaris-icons.shopify.com)
 
-The icons explorer is currently automatically deployed by Shipit at [this stack](https://shipit.shopify.io/shopify/polaris-icons/production).
+The Polaris icon explorer is automatically deployed via the [`polaris-icons/production` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/production).
