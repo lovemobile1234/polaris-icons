@@ -31,7 +31,8 @@
   "homepage": "https://github.com/shopify/polaris-icons#readme",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages-ruby/*"
   ],
   "devDependencies": {
     "@babel/core": "^7.4.3",

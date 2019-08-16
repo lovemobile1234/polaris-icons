@@ -1,10 +1,11 @@
-version = "0.2.3"
+require './version'
 
 Gem::Specification.new do |spec|
   spec.name          = "polaris_icons"
-  spec.version       = version
+  spec.version       = PolarisIcons::VERSION
   spec.authors       = ["amrocha"]
   spec.email         = ["andre.rocha@shopify.com"]
+  spec.licenses      = ['SEE LICENSE.md']
 
   spec.summary       = "Asset gem containing all of the official icons in Polaris"
   spec.description   = "Asset gem containing all of the official icons in Polaris"
@@ -27,6 +28,7 @@ Gem::Specification.new do |spec|
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files         = Dir[
     "{images}/**/*",
+    "package.json",
     "README.md",
     "LICENSE.md",
   ]

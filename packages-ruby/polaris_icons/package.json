@@ -1,0 +1,20 @@
+{
+  "name": "polaris_icons",
+  "version": "0.2.3",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify Inc.",
+  "main": "polaris_icons.gemspec",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/polaris-icons.git",
+    "directory": "packages-ruby/polaris_icons"
+  },
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris-icons/issues"
+  },
+  "homepage": "https://polaris-icons.shopify.com"
+}

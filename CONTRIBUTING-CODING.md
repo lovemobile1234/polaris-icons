@@ -46,7 +46,7 @@ The release process currently involves some manual steps to complete. Please pin
 
 **Note** we have disabled pushing to master temporarily to work around a GitHub bug, so if you want to release you have to go into the repository settings and disable branch protection for the `master` branch
 
-#### Release npm packages
+#### Publish the npm packages
 
 1. Ensure you have the latest `master` branch including all tags:
 
@@ -81,15 +81,12 @@ The release process currently involves some manual steps to complete. Please pin
 
 1. Run `git push --follow-tags`
 1. Log in to [Shipit](https://shipit.shopify.io/shopify/polaris-icons/libraries-js)
-1. When CI is 🍏 on the tag commit, press `Deploy` to update packages on npm.
+1. When CI is 🍏 on the `Publish` commit, press `Deploy` to publish the packages to npm
 
-#### Release the ruby gem
+#### Publish the Ruby gem
 
-1. Bump the version in `packages-ruby/polaris_icons/polaris_icons.gemspec`
-1. Change directories to `/packages-ruby/polaris_icons/` and run `bundle install` to bump the `Gemfile.lock` version of the gem
-1. Open a PR, review and merge
-1. [Create release on GitHub](https://help.github.com/articles/creating-releases/) with a version number that matches `$GEM_NAME/version.rb`
-1. Deploy on [shipit](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby)
+1. Log in to [Shipit](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby)
+1. When CI is 🍏 on the `Publish` commit, press `Deploy` to publish the gem to package cloud
 
 ## Releasing the icon explorer website
 
