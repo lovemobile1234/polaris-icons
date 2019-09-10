@@ -58,17 +58,3 @@ module PolarisIcons
 
   end
 end
-
-
-# {
-#   "images" : [
-#     {
-#       "idiom" : "universal",
-#       "filename" : "activities_major_monotone.pdf"
-#     }
-#   ],
-#   "info" : {
-#     "version" : 1,
-#     "author" : "xcode"
-#   }
-# }
