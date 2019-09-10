@@ -9,6 +9,8 @@ task :convert_and_copy_gem_icons do
 end
 
 def convert_and_copy_gem_icons
+  generate_icons
+
   # Paths
   root_path = File.expand_path("../..", __dir__)
   svg_path = File.join(__dir__, "images/svg")
@@ -16,14 +18,6 @@ def convert_and_copy_gem_icons
 
   FileUtils.mkdir_p(svg_path)
   FileUtils.mkdir_p(pdf_path)
-
-  Build icons
-  system(
-    "yarn",
-    "workspace", "@shopify/polaris-icons",
-    "--cwd", root_path,
-    "run", "build"
-  ) || abort
 
   # Copy
   Dir.glob(File.join(root_path, "packages/polaris-icons/images/*.svg")).each do |path|
@@ -42,4 +36,14 @@ def convert_and_copy_gem_icons
     ) || abort
     puts "Copied to #{output_pdf_path}"
   end
+end
+
+
+def generate_icons
+  system(
+    "yarn",
+    "workspace", "@shopify/polaris-icons",
+    "--cwd", root_path,
+    "run", "build"
+  ) || abort
 end
