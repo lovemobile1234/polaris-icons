@@ -16,4 +16,5 @@ matrix:
         - sudo apt-get install -y librsvg2-bin
       install: yarn install && cd packages-ruby/polaris_icons && bundle install && bundle check
       script:
-        - ./scripts/build-gem.sh
+        - bundle exec rake convert_and_copy_gem_icons
+        - bundle exec rake build

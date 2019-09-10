@@ -17,7 +17,8 @@ shared:
       - cd packages-ruby/polaris_icons/
       - bundle install
       - bundle check
-      - ./scripts/build-gem.sh
+      - bundle exec rake convert_and_copy_gem_icons
+      - bundle exec rake build
     artifact_paths:
       - path: packages-ruby/polaris_icons/pkg
         pattern: '*.gem'
