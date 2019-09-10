@@ -5,7 +5,7 @@ task :default => :spec
 
 desc "Converts and copies the Polaris icons to be vendored in the Gem"
 task :convert_and_copy_gem_icons do
-  convert_icons
+  convert_and_copy_gem_icons
 end
 
 def convert_and_copy_gem_icons
