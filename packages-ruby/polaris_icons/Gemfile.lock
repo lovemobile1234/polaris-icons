@@ -1,6 +1,12 @@
+PATH
+  remote: .
+  specs:
+    polaris_icons (0.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (11.0.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     highline (1.6.20)
@@ -33,8 +39,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.17)
+  byebug (~> 11.0)
   package_cloud
-  rake
+  polaris_icons!
+  rake (~> 10.0)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
