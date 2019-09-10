@@ -6,12 +6,12 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    byebug (11.0.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     highline (1.6.20)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    json (2.2.0)
     json_pure (1.8.1)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
@@ -40,7 +40,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.17)
-  byebug (~> 11.0)
+  json (~> 2.2)
   package_cloud
   polaris_icons!
   rake (~> 10.0)
