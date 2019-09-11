@@ -1,2 +1,52 @@
+require 'fileutils'
 require "bundler/gem_tasks"
+
 task :default => :spec
+
+desc "Converts and copies the Polaris icons to be vendored in the Gem"
+task :convert_and_copy_gem_icons do
+  convert_and_copy_gem_icons
+end
+
+def convert_and_copy_gem_icons
+  generate_icons
+
+  # Paths
+  svg_path = File.join(__dir__, "images/svg")
+  pdf_path = File.join(__dir__, "images/pdf")
+
+  FileUtils.mkdir_p(svg_path)
+  FileUtils.mkdir_p(pdf_path)
+
+  # Copy
+  Dir.glob(File.join(root_path, "packages/polaris-icons/images/*.svg")).each do |path|
+    # SVG
+    output_svg_path = File.join(svg_path, File.basename(path))
+    FileUtils.cp(path, output_svg_path)
+    puts "Copied to #{output_svg_path}"
+
+    # PDF
+    output_pdf_path = File.join(pdf_path, File.basename(path).gsub(".svg", ".pdf"))
+    system(
+      "rsvg-convert",
+      "-f", "pdf",
+      "-o", output_pdf_path,
+      path
+    ) || abort
+    puts "Copied to #{output_pdf_path}"
+  end
+end
+
+
+def generate_icons
+  system(
+    "yarn",
+    "workspace", "@shopify/polaris-icons",
+    "--cwd", root_path,
+    "run", "build"
+  ) || abort
+end
+
+def root_path
+  @root_path ||= File.expand_path("../..", __dir__)
+end
