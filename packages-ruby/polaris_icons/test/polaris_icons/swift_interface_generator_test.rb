@@ -39,7 +39,8 @@ module PolarisIcons
               "templateName" => "swift4",
               "output" => File.join(File.dirname(xcassets_path), "PolarisIcons.swift"),
               "params" => {
-                "enumName" => "PolarisIcons"
+                "enumName" => "PolarisIcons",
+                "publicAccess" => true
               }
             }
           ]
