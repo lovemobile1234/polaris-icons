@@ -31,15 +31,23 @@ module PolarisIcons
 
     def swiftgen_config_valid?(path, xcassets_path:)
       content = YAML.load_file(path)
+      templates_dir = File.expand_path("../../lib/polaris_icons/swift_interface_generator",__dir__)
       expected = {
         "xcassets" => {
           "inputs" => [xcassets_path],
           "outputs" => [
             {
-              "templateName" => "swift4",
+              "templatePath" => File.join(templates_dir, "asset_catalog.stencil"),
               "output" => File.join(File.dirname(xcassets_path), "PolarisIcons.swift"),
               "params" => {
                 "enumName" => "PolarisIcons",
+                "publicAccess" => true
+              }
+            },
+            {
+              "templatePath" => File.join(templates_dir, "typealiases.stencil"),
+              "output" => File.join(File.dirname(xcassets_path), "PolarisIconsTypealiases.swift"),
+              "params" => {
                 "publicAccess" => true
               }
             }
