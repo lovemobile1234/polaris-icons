@@ -25,13 +25,14 @@ def convert_and_copy_gem_icons
   generate_icons
 
   # Paths
-  svg_path = File.join(__dir__, "images/svg")
-  pdf_path = File.join(__dir__, "images/pdf")
-  xcode_path = File.join(__dir__, "images/xcode")
+  images_path = File.join(__dir__, "images")
+  svg_path = File.join(images_path, "svg")
+  pdf_path = File.join(images_path, "pdf")
+  xcode_path = File.join(images_path, "xcode")
 
+  FileUtils.remove_entry(images_path) if File.directory?(images_path)
   FileUtils.mkdir_p(svg_path)
   FileUtils.mkdir_p(pdf_path)
-  FileUtils.rm_r(xcode_path, force: true)
   FileUtils.mkdir_p(xcode_path)
 
   # Copy
