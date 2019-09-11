@@ -28,7 +28,7 @@ module PolarisIcons
     def swiftgen_config(asset_catalogs_dir:)
       {
         "xcassets" => {
-          "inputs" => Dir.glob(File.join(asset_catalogs_dir, "*")),
+          "inputs" => Dir.glob(File.join(asset_catalogs_dir, "*.xcassets")),
           "outputs" => [
             {
               "templateName" => "swift4",
