@@ -5,7 +5,7 @@ containers:
     docker: circleci/ruby:2.5.1-node
 
 steps:
-  - label: Run utilities tests
+  - label: Run tests
     container: ruby
     timeout: 5m
     run:
