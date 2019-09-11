@@ -31,10 +31,17 @@ module PolarisIcons
           "inputs" => Dir.glob(File.join(asset_catalogs_dir, "*.xcassets")),
           "outputs" => [
             {
-              "templateName" => "swift4",
+              "templatePath" => File.join(__dir__, "swift_interface_generator/asset_catalog.stencil"),
               "output" => File.join(asset_catalogs_dir, "PolarisIcons.swift"),
               "params" => {
                 "enumName" => "PolarisIcons",
+                "publicAccess" => true
+              }
+            },
+            {
+              "templatePath" => File.join(__dir__, "swift_interface_generator/typealiases.stencil"),
+              "output" => File.join(asset_catalogs_dir, "PolarisIconsTypealiases.swift"),
+              "params" => {
                 "publicAccess" => true
               }
             }
