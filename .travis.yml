@@ -12,8 +12,7 @@ matrix:
     - osx_image: xcode10.3
       language: objective-c
       before_install:
-        - brew install yarn
-        - brew install swiftgen
+        - brew install librsvg yarn swiftgen
       install: >-
         yarn install &&
         cd packages-ruby/polaris_icons &&
