@@ -10,6 +10,7 @@ matrix:
         - yarn run test
         - yarn run lint
     - osx_image: xcode10.3
+      language: objective-c
       before_install:
         - brew install swiftgen
       install: >-
