@@ -6,16 +6,11 @@ require 'json'
 module PolarisIcons
   class AssetCatalogTest < MiniTest::Test
     include TestHelper::Fixtures
+    include TestHelper::Temporary
 
     def setup
       super
-      @tmp_dir = Dir.mktmpdir
       @subject = AssetCatalog.new
-    end
-
-    def teardown
-      super
-      FileUtils.remove_entry(@tmp_dir)
     end
 
     def test_generate
