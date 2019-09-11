@@ -3,6 +3,7 @@ $LOAD_PATH.unshift(File.join(__dir__, "lib"))
 require 'fileutils'
 require "bundler/gem_tasks"
 require 'polaris_icons'
+require 'open3'
 
 task :default => :spec
 
@@ -12,48 +13,53 @@ task :convert_and_copy_gem_icons do
 end
 
 def convert_and_copy_gem_icons
+  puts "Building icons"
   generate_icons
 
   # Paths
   svg_path = File.join(__dir__, "images/svg")
   pdf_path = File.join(__dir__, "images/pdf")
-  asset_catalogs_path = File.join(__dir__, "images/asset_catalogs")
+  xcode_path = File.join(__dir__, "images/xcode")
 
   FileUtils.mkdir_p(svg_path)
   FileUtils.mkdir_p(pdf_path)
-  FileUtils.rm_r(asset_catalogs_path, force: true)
-  FileUtils.mkdir_p(asset_catalogs_path)
+  FileUtils.rm_r(xcode_path, force: true)
+  FileUtils.mkdir_p(xcode_path)
 
   # Copy
+  puts "Copying SVGs and PDFs"
   asset_catalog = PolarisIcons::AssetCatalog.new
   Dir.glob(File.join(root_path, "packages/polaris-icons/images/*.svg")).each do |path|
     # SVG
     output_svg_path = File.join(svg_path, File.basename(path))
     FileUtils.cp(path, output_svg_path)
-    puts "Copied to #{output_svg_path}"
 
     # PDF
     output_pdf_path = File.join(pdf_path, File.basename(path).gsub(".svg", ".pdf"))
     asset_catalog.add_pdf(output_pdf_path)
-    system(
+    PolarisIcons.execute(
       "rsvg-convert",
       "-f", "pdf",
       "-o", output_pdf_path,
       path
-    ) || abort
-    puts "Copied to #{output_pdf_path}"
+    )
   end
-  asset_catalog.write(asset_catalogs_path)
+  puts "Generating Xcode asset catalog"
+  asset_catalog.write(xcode_path)
+
+  puts "Generating Swift interface"
+  swift_interface_generator = PolarisIcons::SwiftInterfaceGenerator.new
+  swift_interface_generator.generate(asset_catalogs_dir: xcode_path)
 end
 
 
 def generate_icons
-  system(
+  PolarisIcons.execute(
     "yarn",
     "workspace", "@shopify/polaris-icons",
     "--cwd", root_path,
     "run", "build"
-  ) || abort
+  )
 end
 
 def root_path
