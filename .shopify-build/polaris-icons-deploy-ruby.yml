@@ -4,9 +4,18 @@ containers:
   ruby:
     docker: circleci/ruby:2.5.1-node
 
-shared:
-  build-gem: &build-gem
-    label: Build Gem
+steps:
+  - label: Run utilities tests
+    container: ruby
+    timeout: 5m
+    run:
+      - cd packages-ruby/polaris_icons
+      - bundle install
+      - bundle exec rake test
+
+  - wait
+
+  - label: Build Gem
     container: ruby
     timeout: 5m
     run:
@@ -23,8 +32,10 @@ shared:
       - path: packages-ruby/polaris_icons/pkg
         pattern: '*.gem'
         required: true
-  publish-gem: &publish-gem
-    label: Publish to Packagecloud
+
+  - wait
+
+  - label: Publish Gem to Packagecloud
     timeout: 5m
     container: packagecloud
     run:
@@ -35,10 +46,3 @@ shared:
     import_artifacts:
       - pattern: '*.gem'
         into: packages-ruby/polaris_icons/pkg
-
-steps:
-  - <<: *build-gem
-
-  - wait
-
-  - <<: *publish-gem

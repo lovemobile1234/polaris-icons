@@ -4,8 +4,16 @@ require 'fileutils'
 require "bundler/gem_tasks"
 require 'polaris_icons'
 require 'open3'
+require "rake/testtask"
 
 task :default => :spec
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/**/*_test.rb"]
+  t.warning = false
+end
 
 desc "Converts and copies the Polaris icons to be vendored in the Gem"
 task :convert_and_copy_gem_icons do

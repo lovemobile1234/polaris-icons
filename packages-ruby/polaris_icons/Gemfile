@@ -6,3 +6,9 @@ gemspec
 group :deployment do
   gem 'package_cloud'
 end
+
+group :test do
+  gem "minitest", "~> 5.11"
+  gem "minitest-reporters"
+  gem "mocha"
+end
