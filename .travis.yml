@@ -9,12 +9,14 @@ matrix:
         - yarn run type-check
         - yarn run test
         - yarn run lint
-    - language: ruby
-      rvm:
-        - '2.6.2'
+    - osx_image: xcode10.3
       before_install:
-        - sudo apt-get install -y librsvg2-bin
-      install: yarn install && cd packages-ruby/polaris_icons && bundle install && bundle check
+        - brew install swiftgen
+      install: >-
+        yarn install &&
+        cd packages-ruby/polaris_icons &&
+        bundle install &&
+        bundle check
       script:
         - bundle exec rake convert_and_copy_gem_icons
         - bundle exec rake build
