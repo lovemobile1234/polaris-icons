@@ -13,7 +13,9 @@ dependencies:
     - yarn run build
 deploy:
   override:
-    - assert-lerna-independent-version-tags
+    # FIXME: uncomment the following line when this Shipit issue is fixed:
+    # https://github.com/Shopify/shipit-engine/issues/946
+    # - assert-lerna-independent-version-tags
     - publish-lerna-independent-packages
 review:
   checklist:
