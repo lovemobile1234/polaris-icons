@@ -13,7 +13,7 @@ dependencies:
     - yarn run build
 deploy:
   override:
-    - yarn run lerna publish --yes
+    - yarn run lerna publish from-package --yes
 review:
   checklist:
     - Once this is deployed, remember to check on the <a href="https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby">polaris_icons gem deployment</a>
