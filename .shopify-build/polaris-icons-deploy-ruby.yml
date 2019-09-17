@@ -46,6 +46,8 @@ steps:
     run:
       - cd packages-ruby/polaris_icons/
       - apt-get update && apt upgrade -y && apt install build-essential -y
+      - gem update --system
+      - gem install bundler
       - bundle install
       - CURRENT_VERSION=`ls -l pkg | grep '.gem' | sed -e 's/.*polaris_icons-//' -e 's/.gem//'`
       - ./../../scripts/should_release_gem.rb "$CURRENT_VERSION"
