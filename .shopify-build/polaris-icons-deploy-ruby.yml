@@ -2,7 +2,7 @@ containers:
   packagecloud:
     docker: gcr.io/shopify-docker-images/ci/packagecloud:0.1
   ruby:
-    docker: circleci/ruby:2.6.2-node
+    docker: circleci/ruby:2.6.4-node
   macos:
     anka: macos-xcode
 
