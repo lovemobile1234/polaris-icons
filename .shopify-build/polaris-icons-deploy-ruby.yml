@@ -6,6 +6,9 @@ containers:
   macos:
     anka: macos-xcode
 
+env:
+  BUNDLER_VERSION: 2.0.1
+
 steps:
   - label: Run tests
     container: ruby
