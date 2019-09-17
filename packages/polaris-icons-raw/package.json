@@ -5,6 +5,7 @@
   "author": "Shopify Inc.",
   "homepage": "https://github.com/shopify/polaris-icons/tree/master/packages/polaris-icons-raw#readme",
   "license": "SEE LICENSE IN LICENSE.md",
+  "private": true,
   "publishConfig": {
     "access": "restricted"
   },

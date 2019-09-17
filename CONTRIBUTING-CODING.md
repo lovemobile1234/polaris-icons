@@ -72,7 +72,7 @@ The release process currently involves some manual steps to complete. Please pin
 1. Begin the release process:
 
    ```
-   yarn release
+   yarn version-bump
    ```
 
 1. Follow the prompts to choose a version for each package.
