@@ -1,4 +1,6 @@
 containers:
+  packagecloud:
+    docker: gcr.io/shopify-docker-images/ci/packagecloud:0.1
   ruby:
     docker: circleci/ruby:2.5.1-node
   macos:
@@ -16,13 +18,11 @@ steps:
   - wait
 
   - label: Build Gem
-    container: ruby
-    timeout: 5m
+    container: macos
+    timeout: 10m
     run:
-      - sudo apt-get update
-      - sudo apt-get install librsvg2-bin
-      - 'sudo chown -R circleci:circleci node_modules packages/*/bin || true'
       - yarn install
+      - brew install librsvg
       - cd packages-ruby/polaris_icons/
       - bundle install
       - bundle check
@@ -36,10 +36,11 @@ steps:
   - wait
 
   - label: Publish Gem to Packagecloud
-    timeout: 5m
-    container: macos
+    timeout: 10m
+    container: packagecloud
     run:
       - cd packages-ruby/polaris_icons/
+      - apt-get update && apt upgrade -y && apt install build-essential -y
       - bundle install
       - CURRENT_VERSION=`ls -l pkg | grep '.gem' | sed -e 's/.*polaris_icons-//' -e 's/.gem//'`
       - ./../../scripts/should_release_gem.rb "$CURRENT_VERSION"

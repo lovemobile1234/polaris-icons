@@ -4,7 +4,6 @@ require "polaris_icons"
 
 require "minitest/autorun"
 require "mocha/minitest"
-require "byebug"
 require "minitest/reporters"
 
 require 'test_helper/fixtures'
