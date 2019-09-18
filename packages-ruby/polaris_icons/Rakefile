@@ -65,6 +65,7 @@ def convert_and_copy_gem_icons
   svg_path = File.join(images_path, "svg")
   pdf_path = File.join(images_path, "pdf")
   xcode_path = File.join(images_path, "xcode")
+  drawables_path = File.join(images_path, "drawables")
 
   FileUtils.remove_entry(images_path) if File.directory?(images_path)
   FileUtils.mkdir_p(svg_path)
@@ -95,6 +96,10 @@ def convert_and_copy_gem_icons
   end
   puts "Generating Xcode asset catalog"
   asset_catalog.write(xcode_path)
+
+  puts "Generating Android drawables"
+  drawables_generator = PolarisIcons::DrawablesGenerator.new
+  drawables_generator.generate(svg_path, drawables_path)
 end
 
 def root_path
