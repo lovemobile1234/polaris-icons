@@ -34,24 +34,20 @@ Every 6 months or so, we shall consider releasing a new major version that remov
 
 ## Releasing the library
 
-**The npm packages and the gem need to be released at the same time.**
-
-The release process currently involves some manual steps to complete. Please ping one of the repo owners in the `#polaris-icons` Slack channel when you're ready to merge a new PR into `master`, and we will orchestrate a new release.
-
 **Note** Version numbers in `package.json` files should never be altered manually. This will be done via scripts as part of the release process.
 
-### For repo owners
-
-**Note** these steps require admin access to the `Shopify/polaris-icons` github repo.
-
-**Note** we have disabled pushing to master temporarily to work around a GitHub bug, so if you want to release you have to go into the repository settings and disable branch protection for the `master` branch
-
-#### Publish the npm packages
+Follow these steps to release both the npm packages and the Ruby gem:
 
 1. Ensure you have the latest `master` branch including all tags:
 
    ```
    git checkout master && git pull
+   ```
+
+1. Create a new branch for this new release:
+
+   ```
+   git checkout -B new-version
    ```
 
 1. Update the changelog in [`./packages/polaris-icons/CHANGELOG.md`](https://github.com/Shopify/polaris-icons/blob/master/packages/polaris-icons/CHANGELOG.md):
@@ -80,13 +76,19 @@ The release process currently involves some manual steps to complete. Please pin
    **Note** The packages adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 1. Run `git push --follow-tags`
-1. Log in to [Shipit](https://shipit.shopify.io/shopify/polaris-icons/libraries-js)
-1. When CI is 🍏 on the `Publish` commit, press `Deploy` to publish the packages to npm
+1. Open a pull request (title: `Bump package versions`), and get it approved
+1. Merge the pull request
+1. The npm packages and the Ruby gem will automatically be published:
+   - npm packages: [`polaris-icons/libraries-js` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-js)
+   - Ruby gem: [`polaris-icons/libraries-ruby` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby)
 
-#### Publish the Ruby gem
+_Troubleshooting:_ if any of the above fails, ask for help in [#polaris-icons](https://shopify.slack.com/messages/C5CJAMQBV).
 
-The Ruby gem is automatically published via the [`polaris-icons/libraries-ruby` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby).
+## Releasing the `polaris_icons` Ruby gem
+
+The `polaris_icons` Ruby gem is automatically published to https://packages.shopify.io/
+via the [`polaris-icons/libraries-ruby` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby).
 
 ## Releasing the [Polaris icon explorer website](https://polaris-icons.shopify.com)
 
-The Polaris icon explorer is automatically deployed via the [`polaris-icons/production` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/production).
+The Polaris icon explorer is automatically deployed to <https://polaris-icons.shopify.com> via the [`polaris-icons/production` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/production).
