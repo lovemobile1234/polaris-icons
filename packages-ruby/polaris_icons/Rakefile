@@ -55,10 +55,6 @@ def convert_and_copy_gem_icons
   end
   puts "Generating Xcode asset catalog"
   asset_catalog.write(xcode_path)
-
-  puts "Generating Swift interface"
-  swift_interface_generator = PolarisIcons::SwiftInterfaceGenerator.new
-  swift_interface_generator.generate(asset_catalogs_dir: xcode_path)
 end
 
 

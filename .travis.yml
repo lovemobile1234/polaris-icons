@@ -14,7 +14,7 @@ matrix:
       before_install:
         - gem update --system
         - gem install bundler
-        - brew install librsvg yarn swiftgen
+        - brew install librsvg yarn
       install: >-
         yarn install &&
         cd packages-ruby/polaris_icons &&
