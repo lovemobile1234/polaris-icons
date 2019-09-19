@@ -9,3 +9,5 @@
 /build
 /captures
 .externalNativeBuild
+app/src/main/res/drawable/polaris_icon_*
+app/src/main/res/drawable-v24/polaris_icon_*

@@ -1,11 +1,10 @@
 $LOAD_PATH.unshift(File.join(__dir__, "lib"))
 
-require "fileutils"
+require 'fileutils'
 require "bundler/gem_tasks"
-require "polaris_icons"
-require "open3"
+require 'polaris_icons'
+require 'open3'
 require "rake/testtask"
-require "json"
 
 task :default => :spec
 
@@ -21,51 +20,15 @@ task :convert_and_copy_gem_icons do
   convert_and_copy_gem_icons
 end
 
-desc "Builds the iOS project with the Polaris Icons"
-task :build_ios_project do
-  convert_and_copy_gem_icons
-  generate_icons_list_and_build_ios_app
-end
-
-def generate_icons_list_and_build_ios_app
-  puts "Generating polaris_icons.json"
-  icons_list = Dir.glob(File.join(svg_path, "*.svg"))
-    .map {|p| File.basename(p).gsub(".svg", "")}
-  icons_list_path = File.join(__dir__, "projects/ios/PolarisIcons/polaris_icons.json")
-  File.write(icons_list_path, icons_list.to_json)
-
-  puts "Building the iOS app"
-  PolarisIcons.execute(
-    "xcodebuild",
-    "-project", File.join(__dir__, "projects/ios/PolarisIcons.xcodeproj"),
-    "-scheme", "PolarisIcons",
-    "-configuration", "Debug",
-    "-sdk", "iphonesimulator",
-    "-destination 'platform=iOS Simulator,name=iPhone X,OS=11.4'",
-    "CODE_SIGN_IDENTITY=''", "CODE_SIGNING_REQUIRED='NO'", "CODE_SIGN_ENTITLEMENTS=''", "CODE_SIGNING_ALLOWED='NO'",
-    "clean", "build"
-  )
-
-  if ci?
-    puts "Exporting the app for tophat"
-    app_path = Dir.glob(File.join(Dir.home, "/Library/Developer/Xcode/DerivedData/*/Build/Products/Debug-iphonesimulator/PolarisIcons.app")).first
-    abort("Couldn't find the PolarisIcons app in the derived data directory") if app_path.nil?
-
-    files = Dir.glob("**/*", base: app_path).join("\n")
-    Dir.chdir(app_path) do
-      FileUtils.mkdir_p("/tmp/artifacts")
-      PolarisIcons.execute("zip \"/tmp/artifacts/PolarisIcons.app.zip\" -@", stdin_data: files)
-    end
-  end
-end
-
 def convert_and_copy_gem_icons
+  puts "Building icons"
+  generate_icons
+
   # Paths
   images_path = File.join(__dir__, "images")
   svg_path = File.join(images_path, "svg")
   pdf_path = File.join(images_path, "pdf")
   xcode_path = File.join(images_path, "xcode")
-  drawables_path = File.join(images_path, "drawables")
 
   FileUtils.remove_entry(images_path) if File.directory?(images_path)
   FileUtils.mkdir_p(svg_path)
@@ -73,13 +36,9 @@ def convert_and_copy_gem_icons
   FileUtils.mkdir_p(xcode_path)
 
   # Copy
-  puts "Copying monotone SVGs and generating PDFs"
+  puts "Copying SVGs and PDFs"
   asset_catalog = PolarisIcons::AssetCatalog.new
-  svg_icon_filenames = FileList
-    .new(File.join(root_path, "packages/polaris-icons-raw/icons/polaris/*.svg"))
-    .exclude(/_twotone.svg/)
-
-  svg_icon_filenames.each do |path|
+  Dir.glob(File.join(root_path, "packages/polaris-icons/images/*.svg")).each do |path|
     # SVG
     output_svg_path = File.join(svg_path, File.basename(path))
     FileUtils.cp(path, output_svg_path)
@@ -97,35 +56,21 @@ def convert_and_copy_gem_icons
   puts "Generating Xcode asset catalog"
   asset_catalog.write(xcode_path)
 
-  puts "Generating Android drawables"
-  drawables_generator = PolarisIcons::DrawablesGenerator.new
-  drawables_generator.generate(svg_path, drawables_path)
+  puts "Generating Swift interface"
+  swift_interface_generator = PolarisIcons::SwiftInterfaceGenerator.new
+  swift_interface_generator.generate(asset_catalogs_dir: xcode_path)
+end
+
+
+def generate_icons
+  PolarisIcons.execute(
+    "yarn",
+    "workspace", "@shopify/polaris-icons",
+    "--cwd", root_path,
+    "run", "build"
+  )
 end
 
 def root_path
   @root_path ||= File.expand_path("../..", __dir__)
-end
-
-def images_path
-  @images_path ||= File.join(__dir__, "images")
-end
-
-def svg_path
-  @svg_path ||= File.join(images_path, "svg")
-end
-
-def pdf_path
-  @pdf_path ||= File.join(images_path, "pdf")
-end
-
-def xcode_path
-  @xcode_path ||= File.join(images_path, "xcode")
-end
-
-def drawables_path
-  @drawables_path ||= File.join(images_path, "drawables")
-end
-
-def ci?
-  ["true", "1", 'YES'].include?(ENV.fetch("CI", "false"))
 end
