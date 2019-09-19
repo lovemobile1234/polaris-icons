@@ -31,7 +31,7 @@ module PolarisIcons
       content = JSON.load(File.open(File.join(imageset_path, "Contents.json")))
       expected = {
         "images"=>[{"idiom"=>"universal", "filename"=>"icon.pdf"}],
-        "properties"=>{"template-rendering-intent"=>"template"},
+        "properties"=>{"template-rendering-intent"=>"template", "preserves-vector-representation" => true},
         "info"=>{"version"=>1, "author"=>"Polaris"}
       }
       assert_equal expected, content

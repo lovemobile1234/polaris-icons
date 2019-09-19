@@ -5,6 +5,7 @@ require "bundler/gem_tasks"
 require 'polaris_icons'
 require 'open3'
 require "rake/testtask"
+require 'json'
 
 task :default => :spec
 
@@ -18,6 +19,44 @@ end
 desc "Converts and copies the Polaris icons to be vendored in the Gem"
 task :convert_and_copy_gem_icons do
   convert_and_copy_gem_icons
+end
+
+desc "Builds the iOS project with the Polaris Icons"
+task :build_ios_project do
+  convert_and_copy_gem_icons
+  generate_icons_list_and_build_ios_app
+end
+
+def generate_icons_list_and_build_ios_app
+  puts "Generating polaris_icons.json"
+  icons_list = Dir.glob(File.join(svg_path, "*.svg"))
+    .map {|p| File.basename(p).gsub(".svg", "")}
+  icons_list_path = File.join(__dir__, "projects/ios/PolarisIcons/polaris_icons.json")
+  File.write(icons_list_path, icons_list.to_json)
+
+  puts "Building the iOS app"
+  PolarisIcons.execute(
+    "xcodebuild",
+    "-project", File.join(__dir__, "projects/ios/PolarisIcons.xcodeproj"),
+    "-scheme", "PolarisIcons",
+    "-configuration", "Debug",
+    "-sdk", "iphonesimulator",
+    "-destination 'platform=iOS Simulator,name=iPhone X,OS=11.4'",
+    "CODE_SIGN_IDENTITY=''", "CODE_SIGNING_REQUIRED='NO'", "CODE_SIGN_ENTITLEMENTS=''", "CODE_SIGNING_ALLOWED='NO'",
+    "clean", "build"
+  )
+
+  if ci?
+    puts "Exporting the app for tophat"
+    app_path = Dir.glob(File.join(Dir.home, "/Library/Developer/Xcode/DerivedData/*/Build/Products/Debug-iphonesimulator/PolarisIcons.app")).first
+    abort("Couldn't find the PolarisIcons app in the derived data directory") if app_path.nil?
+
+    files = Dir.glob("**/*", base: app_path).join("\n")
+    Dir.chdir(app_path) do
+      FileUtils.mkdir_p("/tmp/artifacts")
+      PolarisIcons.execute("zip \"/tmp/artifacts/PolarisIcons.app.zip\" -@", stdin_data: files)
+    end
+  end
 end
 
 def convert_and_copy_gem_icons
@@ -69,4 +108,28 @@ end
 
 def root_path
   @root_path ||= File.expand_path("../..", __dir__)
+end
+
+def images_path
+  @images_path ||= File.join(__dir__, "images")
+end
+
+def svg_path
+  @svg_path ||= File.join(images_path, "svg")
+end
+
+def pdf_path
+  @pdf_path ||= File.join(images_path, "pdf")
+end
+
+def xcode_path
+  @xcode_path ||= File.join(images_path, "xcode")
+end
+
+def drawables_path
+  @drawables_path ||= File.join(images_path, "drawables")
+end
+
+def ci?
+  ["true", "1", 'YES'].include?(ENV.fetch("CI", "false"))
 end

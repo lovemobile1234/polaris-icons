@@ -1,0 +1,23 @@
+containers:
+  xcode:
+    xcode: macos-xcode
+
+steps:
+  - label: Build an iOS app with the icons
+    container: xcode
+    timeout: 10m
+    run:
+      - yarn install
+      - brew install librsvg
+      - cd packages-ruby/polaris_icons/
+      - bundle install
+      - bundle exec rake build_ios_project
+    artifact_paths:
+      - path: /tmp/artifacts
+        pattern: '*'
+        required: true
+    status:
+      context: tophat/ios/polaris-icons
+      pending: 'Generating tophat artifacts.'
+      success: "You can tophat this build with 'dev ios tophat'."
+      failure: 'This build cannot be tophatted.'

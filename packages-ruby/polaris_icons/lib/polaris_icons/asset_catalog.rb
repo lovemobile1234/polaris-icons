@@ -43,7 +43,8 @@ module PolarisIcons
             }
           ],
           properties: {
-            "template-rendering-intent" => "template"
+            "template-rendering-intent" => "template",
+            "preserves-vector-representation" => true
           }
         }
         contents.merge!(info)
