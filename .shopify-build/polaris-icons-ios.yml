@@ -1,6 +1,6 @@
 containers:
   xcode:
-    xcode: macos-xcode
+    anka: macos-xcode
 
 steps:
   - label: Build an iOS app with the icons
