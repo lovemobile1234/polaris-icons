@@ -13,6 +13,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    applicationVariants.all { variant ->
+       variant.outputs.all {
+           outputFileName = "PolarisIcons.apk"
+       }
+   }
     buildTypes {
         release {
             minifyEnabled false
