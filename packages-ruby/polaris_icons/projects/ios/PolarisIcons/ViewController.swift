@@ -15,6 +15,8 @@ fileprivate class Cell: UICollectionViewCell {
     
     fileprivate func setup() {
         imageView = UIImageView(frame: .zero)
+        imageView.tintColor = .black
+        imageView.tintAdjustmentMode = .automatic
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
         
