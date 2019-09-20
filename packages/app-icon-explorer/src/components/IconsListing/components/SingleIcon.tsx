@@ -1,7 +1,7 @@
 import React, {useContext, useCallback} from 'react';
 import classNames from 'classnames';
 import {stringify as qsStringify} from 'query-string';
-import {Caption, UnstyledLink} from '@shopify/polaris';
+import {Caption, UnstyledLink, Icon} from '@shopify/polaris';
 import {QueryParamsContext} from '../../AppFrame';
 import {Icon as IconInterface} from '../../../types';
 import styles from './SingleIcon.module.scss';
@@ -33,16 +33,15 @@ export default function SingleIcon({icon, isActive = false}: Props) {
 
   return (
     <UnstyledLink url={linkTo} className={className} onClick={trackLink}>
-      <div className={styles.iconSvgWrapper}>
-        <img
-          width="20"
-          height="20"
-          src={`data:image/svg+xml;utf8,${encodeURIComponent(
-            icon.styles.monotone.svgContent,
-          )}`}
-          alt=""
-        />
-      </div>
+      <div
+        className={styles.iconSvgWrapper}
+        dangerouslySetInnerHTML={{
+          __html: icon.styles.twotone
+            ? icon.styles.twotone.svgContent.replace('#FFF', '#637381')
+            : icon.styles.monotone.svgContent,
+        }}
+      />
+
       <div className={styles.iconLabel}>
         <Caption>{icon.name}</Caption>
       </div>
