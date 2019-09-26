@@ -1,11 +1,11 @@
 $LOAD_PATH.unshift(File.join(__dir__, "lib"))
 
-require 'fileutils'
+require "fileutils"
 require "bundler/gem_tasks"
-require 'polaris_icons'
-require 'open3'
+require "polaris_icons"
+require "open3"
 require "rake/testtask"
-require 'json'
+require "json"
 
 task :default => :spec
 
@@ -60,9 +60,6 @@ def generate_icons_list_and_build_ios_app
 end
 
 def convert_and_copy_gem_icons
-  puts "Building icons"
-  generate_icons
-
   # Paths
   images_path = File.join(__dir__, "images")
   svg_path = File.join(images_path, "svg")
@@ -75,9 +72,13 @@ def convert_and_copy_gem_icons
   FileUtils.mkdir_p(xcode_path)
 
   # Copy
-  puts "Copying SVGs and PDFs"
+  puts "Copying monotone SVGs and generating PDFs"
   asset_catalog = PolarisIcons::AssetCatalog.new
-  Dir.glob(File.join(root_path, "packages/polaris-icons/images/*.svg")).each do |path|
+  svg_icon_filenames = FileList
+    .new(File.join(root_path, "packages/polaris-icons-raw/icons/polaris/*.svg"))
+    .exclude(/_twotone.svg/)
+
+  svg_icon_filenames.each do |path|
     # SVG
     output_svg_path = File.join(svg_path, File.basename(path))
     FileUtils.cp(path, output_svg_path)
@@ -94,16 +95,6 @@ def convert_and_copy_gem_icons
   end
   puts "Generating Xcode asset catalog"
   asset_catalog.write(xcode_path)
-end
-
-
-def generate_icons
-  PolarisIcons.execute(
-    "yarn",
-    "workspace", "@shopify/polaris-icons",
-    "--cwd", root_path,
-    "run", "build"
-  )
 end
 
 def root_path
