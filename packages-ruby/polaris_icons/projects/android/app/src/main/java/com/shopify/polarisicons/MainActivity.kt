@@ -55,6 +55,7 @@ class ResourcesAdapter : BaseAdapter {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val drawable = this.resources[position]
         val imageView = ImageView(context)
+        imageView.setColorFilter(context!!.getResources().getColor(R.color.colorPrimary));
         imageView.layoutParams = LinearLayout.LayoutParams(160, 160) // value is in pixels
         imageView.setImageDrawable(drawable)
         return imageView
