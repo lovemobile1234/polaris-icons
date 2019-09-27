@@ -35,7 +35,18 @@ module PolarisIcons
         # Copy the image
         FileUtils.cp(pdf_path, File.join(imageset_path, file_name))
 
-        contents = { images: [{ idiom: "universal", filename: file_name }]}
+        contents = {
+          images: [
+            {
+              idiom: "universal",
+              filename: file_name
+            }
+          ],
+          properties: {
+            "template-rendering-intent" => "template",
+            "preserves-vector-representation" => true
+          }
+        }
         contents.merge!(info)
         json = JSON.pretty_generate(contents)
         File.write(File.join(imageset_path, "Contents.json"), json)
