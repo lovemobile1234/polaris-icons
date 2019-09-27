@@ -27,6 +27,30 @@ task :build_ios_project do
   generate_icons_list_and_build_ios_app
 end
 
+desc "Builds the Android project with the Polaris Icons"
+task :build_android_project do
+  convert_and_copy_gem_icons
+  copy_icons_and_build_android_app
+end
+
+def copy_icons_and_build_android_app
+  puts "Building the Android app"
+
+  images_path = File.join(__dir__, "images")
+  src_path = File.join(images_path, "drawables")
+  dst_path = File.join(__dir__, "projects/android/app/src/main/res/drawable")
+  Dir.glob(File.join(src_path, "*.xml")).each do |drawable|
+    FileUtils.copy_entry(drawable, File.join(dst_path, "polaris_icon_#{File.basename(drawable)}"))
+  end
+
+  project_path = File.join(__dir__, "projects/android")
+  PolarisIcons.execute(
+    File.join(project_path, "./gradlew"),
+    '-p', project_path,
+    'assembleDebug'
+  )
+end
+
 def generate_icons_list_and_build_ios_app
   puts "Generating polaris_icons.json"
   icons_list = Dir.glob(File.join(svg_path, "*.svg"))
@@ -95,6 +119,10 @@ def convert_and_copy_gem_icons
   end
   puts "Generating Xcode asset catalog"
   asset_catalog.write(xcode_path)
+
+  puts "Generating Android drawables"
+  drawables_generator = PolarisIcons::DrawablesGenerator.new
+  drawables_generator.generate(svg_path, drawables_path)
 end
 
 def root_path

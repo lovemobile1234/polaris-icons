@@ -7,6 +7,15 @@ up:
       version: v10.13.0 # to be kept in sync with .nvmrc, package.json, and .shopify-build/polaris-icons.yml
   - homebrew:
       - librsvg
+  - android:
+      packages:
+        - tools
+        - emulator
+        - platform-tools
+        - build-tools;26.0.2
+        - platforms;android-21
+        - platforms;android-28
+        - system-images;android-28;google_apis;x86
 
 open:
   shipit: https://shipit.shopify.io/shopify/polaris-icons/testing

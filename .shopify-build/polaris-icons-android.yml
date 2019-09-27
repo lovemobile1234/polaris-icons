@@ -1,0 +1,25 @@
+containers:
+  android:
+    docker: gcr.io/shopify-docker-images/apps/production/android-docker:1.2.3
+
+steps:
+  - label: Building Android app with a Polaris Icons gallery
+    container: android
+    run:
+      - cd packages-ruby/polaris_icons
+      - apt-get update && apt upgrade -y && apt install librsvg2-bin -y
+      - yarn install
+      - bundle install
+      - bundle exec rake build_android_project
+    artifact_paths:
+      - path: packages-ruby/polaris_icons/projects/android/app/build/outputs/apk
+        required: true
+    status:
+      context: tophat/android/polaris-icons
+      pending: 'Generating tophat artifacts.'
+      success: "You can tophat this build with 'dev android tophat'."
+      failure: 'This build cannot be tophatted.'
+    cache:
+      - path: /root/.gradle/
+        scope: shopify
+    timeout: 10m

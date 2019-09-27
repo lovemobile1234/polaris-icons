@@ -13,6 +13,9 @@
     "url": "git+https://github.com/Shopify/polaris-icons.git",
     "directory": "packages-ruby/polaris_icons"
   },
+  "devDependencies": {
+    "svg2vectordrawable": "^2.6.16"
+  },
   "bugs": {
     "url": "https://github.com/Shopify/polaris-icons/issues"
   },
