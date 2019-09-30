@@ -27,7 +27,8 @@ steps:
     timeout: 10m
     run:
       - yarn install
-      - brew install librsvg java
+      - brew install librsvg
+      - brew cask install java
       - cd packages-ruby/polaris_icons/
       - bundle install
       - bundle check
