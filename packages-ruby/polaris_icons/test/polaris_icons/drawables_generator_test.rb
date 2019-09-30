@@ -15,16 +15,20 @@ module PolarisIcons
     def test_generate
       # Given
       svgs_path = File.join(@tmp_dir, "svgs")
+      FileUtils.mkdir_p(svgs_path)
+      svg_path = File.join(svgs_path, "polaris-icon.svg")
+      FileUtils.touch(svg_path)
       drawables_path = File.join(@tmp_dir, "drawables")
       root_path = File.expand_path("../../../..", __dir__)
 
       PolarisIcons
         .expects(:execute)
-        .with("yarn",
-          "--cwd", root_path,
-          "run", "svg2vectordrawable",
-          "-f", svgs_path,
-          "-o", drawables_path
+        .with(
+          "java",
+          "-jar",
+          File.join(root_path, "bin/svg2vd-0.1.jar"),
+          File.join(svgs_path, "polaris_icon.svg"),
+          drawables_path
         )
 
       # Then
