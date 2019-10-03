@@ -38,11 +38,11 @@ We’re always looking for contributors to help us create new icons, update exit
 
 ### Suggest a new icon
 
-If you can’t find the icon you need, you can [suggest a new icon](https://github.com/Shopify/polaris-icons/issues/new?assignees=&labels=New&template=submit-a-new-icon.md&title=%5BSubmission%5D+Icon+name) for us to include in the collection.
+If you can’t find the icon you need, you can [suggest a new icon](https://github.com/Shopify/polaris-icons/issues/new?assignees=&labels=New&template=suggest-a-new-icon.md&title=%5BSuggestion%5D+Icon+name) for us to include in the collection.
 
 ### Suggest changes to an icon
 
-If you notice an existing icon that’s out-of-date or needs improvements, you can [suggest changes](https://github.com/Shopify/polaris-icons/issues/new?assignees=&labels=Update&template=suggest-changes-to-an-existing-icon.md&title=%5BSubmission%5D) to that icon.
+If you notice an existing icon that’s out-of-date or needs improvements, you can [suggest changes](https://github.com/Shopify/polaris-icons/issues/new?assignees=&labels=Update&template=suggest-changes-to-an-existing-icon.md&title=%5BSuggestion%5D) to that icon.
 
 ### Submit feedback
 
