@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### New icons
+
+- `AutomationMajorMonotone`
+- `AutomationMajorTwotone`
+
 ## 3.7.0 - 2019-09-27
 
 ### Added
