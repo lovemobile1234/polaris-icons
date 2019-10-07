@@ -146,6 +146,16 @@ allIconFiles.forEach(
 
         expect(nodeSources(nodesWithInvalidFill, iconSource)).toStrictEqual([]);
       });
+
+      it(`ends with a new line`, () => {
+        const endsWithNewLine = iconSource[iconSource.length - 1] === '\n';
+        expect(endsWithNewLine).toStrictEqual(true);
+      });
+
+      it(`doesn't have a <?xml character encoding declaration`, () => {
+        const containsXMLTag = iconSource.indexOf('<?xml') > -1;
+        expect(containsXMLTag).toStrictEqual(false);
+      });
     });
   },
 );
