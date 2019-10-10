@@ -7,8 +7,10 @@ keywords:
   - data
   - graph
   - reports
+  - chart
 authors:
   - Adam Whitcroft
+  - Miru Alves
 public: true
 version: 1
 date_added: 2019-03-15
