@@ -13,7 +13,7 @@ You should already understand the impact of this change,
 where the icon is used, etc.
 
 Any questions?
-- https://vault.shopify.com/Polaris-icon-creation-guidelines
+- https://vault.shopify.io/pages/1453-Polaris-icon-creation-guidelines
 - #polaris-icons on Slack
 -->
 
@@ -36,23 +36,9 @@ Please include any relevant images, the reason you are
 creating this icon, and any additional context.
 -->
 
-### Link to Abstract branch
+### Link to Figma file
 
-<!--
-Make sure you’ve created a branch with your new icon
-inside of Abstract (Polaris - Icons project) and link it here
--->
-
-### Updated icon SVG
-
-<!--
-Link to the SVG file (you can host it in Google Drive)
-or paste the SVG code below:
--->
-
-```xml
-<svg xmlns="http://www.w3.org/2000/svg" ...
-```
+https://www.figma.com/file/…
 
 ### Icon metadata (optional)
 

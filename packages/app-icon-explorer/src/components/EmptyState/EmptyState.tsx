@@ -13,16 +13,16 @@ export default function EmptyState() {
         <p>
           <TextStyle variation="subdued">
             Open a GitHub issue to send us feedback. Shopify employees can also
-            submit a request for a new icon.
+            suggest a new icon.
           </TextStyle>
         </p>
         <div className={styles.buttonGroup}>
           <ButtonGroup>
-            <Button url="https://github.com/Shopify/polaris-icons/issues/new/choose">
+            <Button url="https://github.com/Shopify/polaris-icons/issues/new?assignees=HYPD&labels=&template=feedback-for-polaris-icons-ui.md&title=%5BFeedback%5D">
               Send feedback
             </Button>
-            <Button url="https://forms.gle/nY446pDJQJB7pHxP6">
-              Request icon
+            <Button url="https://github.com/Shopify/polaris-icons/issues/new?assignees=&labels=New&template=suggest-a-new-icon.md&title=%5BSuggestion%5D+Icon+name">
+              Suggest a new icon
             </Button>
           </ButtonGroup>
         </div>

@@ -2,41 +2,42 @@
 
 [![npm version](https://img.shields.io/npm/v/@shopify/polaris-icons.svg?style=flat)](https://www.npmjs.com/package/@shopify/polaris-icons)
 
-> This package exports a JavaScript file containing the Polaris icons that can be used by partners building on the Shopify platform, and contains SVG files in the [`/images/` directory](https://unpkg.com/@shopify/polaris-icons/images/).
+> This package exports a JavaScript file containing the Polaris icons partners can use to build on the Shopify platform, and contains SVG files in the [`/images/` directory](https://unpkg.com/@shopify/polaris-icons/images/) ([SVG usage instructions](#svg-files)).
 
 Browse and search Polaris icons: <https://polaris-icons.shopify.com>.
 
 ## Getting started
 
-Although it's possible to use this package directly, we recommend using the icons in this package through [Polaris React](https://github.com/Shopify/polaris-react) in combination with the `Icon` component from that project. Make sure that your app is using Polaris React version 3.10.0 or higher.
+Although it’s possible to use this package directly, we recommend using the icons in this package through [Polaris React](https://github.com/Shopify/polaris-react) in combination with the [`Icon`](https://polaris.shopify.com/components/images-and-icons/icon) component. Make sure that your app is using Polaris React version 3.10.0 or higher.
 
 ## Installation
 
-After you have Polaris React installed, you need to add Polaris icons as a dependency.
+1. Install Polaris React ([instructions](https://polaris.shopify.com/components/get-started)) if you haven’t already
+2. Polaris icons as a dependency:
 
-Run the following command using [npm](https://www.npmjs.com/):
+   Using [npm](https://www.npmjs.com/):
 
-```
-npm install @shopify/polaris-icons --save
-```
+   ```
+   npm install @shopify/polaris-icons --save
+   ```
 
-If you prefer [Yarn](https://yarnpkg.com/en/), then use the following command instead:
+   Or, using [Yarn](https://yarnpkg.com/en/):
 
-```
-yarn add @shopify/polaris-icons
-```
+   ```
+   yarn add @shopify/polaris-icons
+   ```
 
 ## Usage
 
-Import the `Icon` component from Polaris React and any icon from Polaris icons into your project.
+Import the [`Icon`](https://polaris.shopify.com/components/images-and-icons/icon) component from Polaris React and any icon from Polaris icons into your project.
 
-1. Include the icon component from Polaris React:
+1. Import the icon component from Polaris React:
 
    ```tsx
    import {Icon} from '@shopify/polaris';
    ```
 
-2. Include an icon from Polaris icons:
+2. Import an icon from Polaris icons:
 
    ```tsx
    import {AddMajorMonotone} from '@shopify/polaris-icons';
@@ -50,9 +51,53 @@ Import the `Icon` component from Polaris React and any icon from Polaris icons i
 
 ### SVG files
 
-For consumers who don’t use React, we provide SVG files within the `images` folder.
+If you don’t use React, use SVG files available in the `images` folder.
 
-View the list of available files on [unpkg](https://unpkg.com/@shopify/polaris-icons/images/).
+[Browse the list of available SVG files](https://unpkg.com/@shopify/polaris-icons/images/), hosted on the unpkg CDN.
+
+Suggested CSS and markup for projects that aren’t using the Polaris HTML and CSS components:
+
+```css
+.Custom-Polaris-Icon {
+  display: block;
+  height: 2rem; /* or value equivalent to 20px */
+  width: 2rem; /* or value equivalent to 20px */
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+.Custom-Polaris-Icon__Svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  /* Icon color */
+  fill: #000;
+
+  /* White fill in twotone icons */
+  color: #fff;
+}
+```
+
+```html
+<span class="Custom-Polaris-Icon">
+  <svg
+    viewBox="0 0 20 20"
+    class="Custom-Polaris-Icon__Svg"
+    focusable="false"
+    aria-hidden="true"
+  >
+    <path fill="currentColor" d="M7 13h6v6H7z" />
+    <path
+      d="M19.664 8.252l-9-8a1 1 0 0 0-1.328 0L8 1.44V1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v5.773L.336 8.252a1.001 1.001 0 0 0 1.328 1.496L2 9.449V19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9.449l.336.299a.997.997 0 0 0 1.411-.083 1.001 1.001 0 0 0-.083-1.413zM16 18h-2v-5a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v5H4V7.671l6-5.333 6 5.333V18zm-8 0v-4h4v4H8zM4 2h2v1.218L4 4.996V2z"
+      fill-rule="evenodd"
+    />
+  </svg>
+</span>
+```
 
 ## Contributing 🙌
 

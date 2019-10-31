@@ -1,14 +1,16 @@
-# Polaris icons: coding contributor's guide
+# Polaris icons: coding contributor’s guide
 
-This guide is made for people who want to contribute code to the repository. If you're not comfortable doing that, there's other ways you can help.
+This guide is made for people who want to contribute code to the repository. If you’re not comfortable doing that, there are other ways you can help.
+
+This project is structured as a [monorepo](https://en.wikipedia.org/wiki/Monorepo), storing multiple packages under a single repository, and uses [Lerna](https://github.com/lerna/lerna) to manage these packages.
 
 ## Code of conduct
 
-We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris-tokens/blob/master/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
+We expect all participants to read our [code of conduct](./.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
 
-## Developing
+## Quick start
 
-This package uses [Lerna](https://github.com/lerna/lerna). That means you have to install sub-package dependencies before you can start developing:
+Clone this repository, then run:
 
 ```
 yarn
@@ -17,20 +19,26 @@ yarn bootstrap
 
 ## Deprecation guidelines
 
-Sometimes icons need to be renamed or removed. Both of these actions are breaking changes from a developer's perspective. In order to not erode trust with our consumers and ensure painless update paths we will reduce the impact of these breaking changes by batching them up. Signal your intent to make a breaking change by deprecating an icon like so:
+Sometimes icons need to be renamed or removed. Both of these actions are breaking changes from a developer’s perspective. In order to not erode trust with our consumers and ensure painless update paths we will reduce the impact of these breaking changes by batching them up. Signal your intent to make a breaking change by deprecating an icon like so:
 
-When you deprecate an icon with no replacement (that is, the icon should be deleted in the future), add `deprecated: true` to the icon's metadata.
-
-When you deprecate an icon with a replacement (that is, you rename an icon), rename the icon's SVGs and metadata file, then add a `deprecated_aliases` key to the metadata with an array containing each of the icon’s previous names. For instance, if you were to rename `foo_major.yml` to `bar_major.yml`, then the bottom of the new `bar_major.yml` should contain:
+When you deprecate an icon with no replacement (that is, the icon should be deleted in the future), add `deprecated: true` to the icon’s metadata:
 
 ```yml
+deprecated: true
+```
+
+When you deprecate an icon with a replacement (that is, you rename an icon), rename the icon’s SVGs and metadata file, then add a `deprecated_aliases` key to the metadata with an array containing each of the icon’s previous names. For instance, if you were to rename `old_major.yml` to `new_major.yml`, add these lines to `new_major.yml`:
+
+```yml
+# new_major.yml
+---
 deprecated_aliases:
-  - foo_major
+  - old_major
 ```
 
 This will maintain an export with the original name but mark it as deprecated and instruct consumers to use the new name.
 
-Every 6 months or so, we shall consider releasing a new major version that removes any deprecated icons and aliases.
+Every 6 months or so, we’ll consider releasing a new major version that removes any deprecated icons and aliases.
 
 ## Releasing the library
 
@@ -82,7 +90,7 @@ Follow these steps to release both the npm packages and the Ruby gem:
    - npm packages: [`polaris-icons/libraries-js` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-js)
    - Ruby gem: [`polaris-icons/libraries-ruby` Shipit stack](https://shipit.shopify.io/shopify/polaris-icons/libraries-ruby)
 
-_Troubleshooting:_ if any of the above fails, ask for help in [#polaris-icons](https://shopify.slack.com/messages/C5CJAMQBV).
+_Troubleshooting:_ if any of the above fails, ask for help in [#polaris-icons](https://shopify.slack.com/messages/polaris-icons).
 
 ## Releasing the `polaris_icons` Ruby gem
 

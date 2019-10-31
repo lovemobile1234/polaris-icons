@@ -40,7 +40,7 @@ export default function IntroHeader() {
       <div className={styles.buttons}>
         <ButtonGroup>
           <Button url="https://github.com/Shopify/polaris-icons">
-            View on GitHub
+            Browse code on GitHub
           </Button>
           <Button
             plain
