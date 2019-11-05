@@ -1,9 +1,9 @@
 name: featured content
 set: major
-description:
-  Used to represent a featured or favourite page or content item.
+description: Used to represent a featured or favorite page or content item.
 keywords:
   - favourite
+  - favorite
   - feature
 authors:
   - Adam Whitcroft
