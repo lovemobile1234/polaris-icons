@@ -1861,6 +1861,22 @@ export {
 } from '@shopify/polaris-icons-raw/icons/polaris/redo_major_twotone.svg';
 
 export {
+  default as ReferralMajorMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/referral_major_monotone.svg';
+
+export {
+  default as ReferralMajorTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/referral_major_twotone.svg';
+
+export {
+  default as ReferralCodeMajorMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/referral-code_major_monotone.svg';
+
+export {
+  default as ReferralCodeMajorTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/referral-code_major_twotone.svg';
+
+export {
   default as RefreshMajorMonotone,
 } from '@shopify/polaris-icons-raw/icons/polaris/refresh_major_monotone.svg';
 
