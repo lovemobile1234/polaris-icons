@@ -1,11 +1,12 @@
-name: favourite
+name: favorite
 set: major
-description:
-  Used to represent an action to favourite or save an item or resource.
+description: Used to represent an action to favorite or save an item or resource.
 keywords:
   - favorite
+  - favourite
   - save
   - star
+  - starred
 authors:
   - Adam Whitcroft
 public: true
@@ -13,3 +14,5 @@ version: 1
 date_added: 2019-03-15
 date_modified: 2019-03-15
 exclusive_use:
+deprecated_aliases:
+  - favourite

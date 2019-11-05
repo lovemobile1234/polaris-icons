@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Deprecated
+
+- `FavouriteMajor` was renamed to `FavoriteMajor` to match the American spelling
+
 ### New icons
 
 - `AutomationMajorMonotone`
@@ -14,6 +18,10 @@ All notable changes to this project will be documented in this file.
 - `ReferralMajorTwotone`
 - `ReferralCodeMajorMonotone`
 - `ReferralCodeMajorTwotone`
+
+### Fixed
+
+- Fixed an issue in `FavoriteMajor` where the top branch of the star had a visual artifact
 
 ## 3.7.0 - 2019-09-27
 
