@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file.
 - iOS asset catalog.
 - Android drawables.
 
-## 3.6.0 - 2019-09-16 [BORKED]
+## 3.6.0 - 2019-09-16
 
 ### New icons
 
