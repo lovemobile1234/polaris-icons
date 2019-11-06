@@ -14,7 +14,7 @@ const configPerSetAndStyle = new Map([
     {viewbox: '0 0 20 20', colors: ['#637381', '#FFF', '#fff']},
   ],
   ['minor', {viewbox: '0 0 20 20', colors: ['#212B36', '#212b36']}],
-  ['spot', {viewbox: '0 0 41 41', colors: ['#212B36', '#212b36']}],
+  ['spot', {viewbox: '0 0 45 45', colors: ['#212B36', '#212b36']}],
 ]);
 
 const allIconFiles = glob

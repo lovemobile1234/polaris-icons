@@ -50,13 +50,13 @@ function testHasNamespace({iconAst}) {
 }
 
 function testHasExpectedViewbox({iconAst}) {
-  const expectedViewboxes = ['0 0 20 20', '0 0 41 41'];
+  const expectedViewboxes = ['0 0 20 20', '0 0 45 45'];
 
   const viewBox = select(':root', iconAst).properties.viewBox;
   const isProblem = !expectedViewboxes.includes(viewBox);
 
   return isProblem
-    ? `Has a viewbox of "${viewBox}" but expected "0 0 20 20" or "0 0 41 41"`
+    ? `Has a viewbox of "${viewBox}" but expected "0 0 20 20" or "0 0 45 45"`
     : '';
 }
 
