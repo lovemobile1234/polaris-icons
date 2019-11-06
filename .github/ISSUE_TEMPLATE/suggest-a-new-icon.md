@@ -25,11 +25,16 @@ Any questions?
 
 Team - Project
 
+<!-- If applicable, link to the Vault project -->
+
 ### How will this icon be used?
 
 <!--
 Please include any relevant images, the reason you are
 creating this icon, and any additional context.
+
+IMPORTANT: do not disclose any critically confidential information,
+such as: personally identifyable information, forward looking designs…
 -->
 
 ### Link to Figma file
