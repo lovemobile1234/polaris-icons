@@ -17,15 +17,35 @@ yarn
 yarn bootstrap
 ```
 
+## When adding, renaming, deleting icons
+
+Every time you add, rename, or delete an icon, index files ([example](/packages/polaris-icons/src/index.ts)) need to be updated.
+
+To update index files, run:
+
+```
+yarn run generate-icon-packages
+```
+
+## Running tests
+
+```
+yarn test
+```
+
 ## Deprecation guidelines
 
-Sometimes icons need to be renamed or removed. Both of these actions are breaking changes from a developer’s perspective. In order to not erode trust with our consumers and ensure painless update paths we will reduce the impact of these breaking changes by batching them up. Signal your intent to make a breaking change by deprecating an icon like so:
+Sometimes icons need to be renamed or removed. Both of these actions are breaking changes from a developer’s perspective. In order to not erode trust with our consumers and ensure painless update paths we will reduce the impact of these breaking changes by batching them up.
+
+### Deleting an icon
 
 When you deprecate an icon with no replacement (that is, the icon should be deleted in the future), add `deprecated: true` to the icon’s metadata:
 
 ```yml
 deprecated: true
 ```
+
+### Renaming an icon
 
 When you deprecate an icon with a replacement (that is, you rename an icon), rename the icon’s SVGs and metadata file, then add a `deprecated_aliases` key to the metadata with an array containing each of the icon’s previous names. For instance, if you were to rename `old_major.yml` to `new_major.yml`, add these lines to `new_major.yml`:
 

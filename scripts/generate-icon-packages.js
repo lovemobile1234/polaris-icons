@@ -1,4 +1,5 @@
-// Generates polaris-icons's index.ts file based upon the svgs in polaris-icons-raw
+// Generates index.ts files for each package,
+// based on SVG files and metadata from polaris-icons-raw
 
 const fs = require('fs');
 const path = require('path');
