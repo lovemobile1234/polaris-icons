@@ -2,7 +2,7 @@
 name: Feedback for Polaris icon explorer
 about: For suggestions or issues related to https://polaris-icons.shopify.com
 title: '[Feedback]'
-labels: ''
+labels: Polaris icon explorer
 assignees: HYPD
 ---
 
