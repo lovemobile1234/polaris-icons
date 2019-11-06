@@ -949,12 +949,22 @@ export {
 } from '@shopify/polaris-icons-raw/icons/polaris/favicon_major_twotone.svg';
 
 export {
-  default as FavouriteMajorMonotone,
-} from '@shopify/polaris-icons-raw/icons/polaris/favourite_major_monotone.svg';
+  default as FavoriteMajorMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/favorite_major_monotone.svg';
+
+/** @deprecated FavouriteMonotone will be removed in the next major version. Use FavoriteMajorMonotone instead. */
+export {
+  default as FavouriteMonotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/favorite_major_monotone.svg';
 
 export {
-  default as FavouriteMajorTwotone,
-} from '@shopify/polaris-icons-raw/icons/polaris/favourite_major_twotone.svg';
+  default as FavoriteMajorTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/favorite_major_twotone.svg';
+
+/** @deprecated FavouriteTwotone will be removed in the next major version. Use FavoriteMajorTwotone instead. */
+export {
+  default as FavouriteTwotone,
+} from '@shopify/polaris-icons-raw/icons/polaris/favorite_major_twotone.svg';
 
 export {
   default as FeaturedCollectionMajorMonotone,
