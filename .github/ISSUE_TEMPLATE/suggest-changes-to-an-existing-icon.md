@@ -4,7 +4,6 @@ about: For modifications of existing icons already in Polaris icons
 title: '[Suggestion]'
 labels: Update
 assignees: ''
-
 ---
 
 <!--
@@ -68,15 +67,14 @@ then apply the changes below.
 name: arrow down
 set: major or minor
 description:
-  # Description:
-  #
-  #   Action: "Used to denote <x action>"
-  #   Wayfinding: "Used to help direct merchants to <x>"
-  #   Concept: "Used to represent <x>"
-  #   Education: "Used to give merchants more information about <context x>"
+  # Icon type   | Example description
+  # ----------- | --------------------------
+  # Action      | Used to denote <x action>.
+  # Wayfinding  | Used to help direct merchants to <x>.
+  # Concept     | Used to represent <x>.
+  # Education   | Used to give merchants more information about <context x>.
   #
   # Full guidelines: https://bit.ly/2GdMpmg
-  #
   # (delete this comment block)
   N/A
 keywords:
