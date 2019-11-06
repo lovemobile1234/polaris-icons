@@ -12,7 +12,7 @@ authors:
 public: true
 version: 1
 date_added: 2019-03-15
-date_modified: 2019-03-15
+date_modified: 2019-11-05
 exclusive_use:
 deprecated_aliases:
   - favourite
