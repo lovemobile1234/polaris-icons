@@ -1,22 +1,10 @@
 name: referral code
 set: major
-description:
-  # Icon type   | Example description
-  # ----------- | --------------------------
-  # Action      | Used to denote <x action>.
-  # Wayfinding  | Used to help direct merchants to <x>.
-  # Concept     | Used to represent <x>.
-  # Education   | Used to give merchants more information about <context x>.
-  #
-  # Full guidelines: https://bit.ly/2GdMpmg
-  # (delete this comment block)
-  N/A
+description: Used to represent a referral code’s usage status.
 keywords:
-  # - synonym
-  # - another synonym
-  # - related shape or symbol
-  # (delete this comment block)
-  - N/A
+  - referral
+  - code
+  - coupon
 authors:
   # - Sasha Oliveira
   # - Co-author’s name (optional)
