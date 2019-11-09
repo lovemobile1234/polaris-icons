@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - `AutomationMajorMonotone`
 - `AutomationMajorTwotone`
+- `CapitalMajorMonotone` (exports were missing in v3.6.0)
+- `CapitalMajorTwotone` (exports were missing in v3.6.0)
 
 ## 3.7.0 - 2019-09-27
 
